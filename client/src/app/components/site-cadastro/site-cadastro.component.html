@@ -16,7 +16,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="URl" formControlName="url" [errorStateMatcher]="matcher">
+          <input matInput placeholder="URL" formControlName="url" [errorStateMatcher]="matcher">
           <mat-error>
             <span *ngIf="!siteForm.get('url').valid && siteForm.get('url').touched">Por favor entre a url</span>
           </mat-error>

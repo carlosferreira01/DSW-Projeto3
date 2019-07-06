@@ -10,7 +10,7 @@ import { Site } from '../../models/site';
 export class SitesComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'url', 'email', 'senha', 'telefone'];
-  livros: Site[] = [];
+  sites: Site[] = [];
   isLoadingResults = true;
 
   constructor(private api: ApiService) { }

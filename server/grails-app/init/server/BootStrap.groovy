@@ -13,8 +13,6 @@ class BootStrap {
         globo.save()
         Site uol = new Site (email: 'uol@gmail.com' ,senha: '12345', nome: 'Uol', url: 'www.uol.com',telefone: '32313211')
         uol.save()
-        Teatro arroz = new Site (email: 'arroz@teatro.com' ,senha: '123', cnpj: '111111111111', nome: 'Teatro Arroz',cidade: 'Franca')
-        arroz.save()
 
     }
     def destroy = {

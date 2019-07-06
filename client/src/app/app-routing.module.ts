@@ -25,10 +25,34 @@ const routes: Routes = [
     {
       path: 'promocao-edicao/:id', component: PromocaoEdicaoComponent, data: { title: 'Edição Promocao' }
     },
+    {
+      path: 'teatros', component: TeatrosComponent , data: { title: 'Lista de Teatros' }
+    },
+    {
+      path: 'teatro-detalhes/:id', component: TeatroDetalhesComponent, data: { title: 'Detalhes de Teatro' }
+    },
+    {
+      path: 'teatro-cadastro', component: TeatroCadastroComponent, data: { title: 'Cadastro Teatro' }
+    },
+    {
+      path: 'teatro-edicao/:id', component: TeatroEdicaoComponent, data: { title: 'Edição Teatro' }
+    },
+    {
+      path: 'sites', component: SitesComponent , data: { title: 'Lista de Sites' }
+    },
+    {
+      path: 'site-detalhes/:id', component: SiteDetalhesComponent, data: { title: 'Detalhes de Site' }
+    },
+    {
+      path: 'site-cadastro', component: SiteCadastroComponent, data: { title: 'Cadastro Site' }
+    },
+    {
+      path: 'site-edicao/:id', component: SiteEdicaoComponent, data: { title: 'Edição Site' }
+    },
     { 
        path: '', redirectTo: '/promocoes', pathMatch: 'full'
     }
-  ];;
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
