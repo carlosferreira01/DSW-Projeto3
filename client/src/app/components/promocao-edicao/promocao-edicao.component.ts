@@ -23,6 +23,19 @@ export class PromocaoEdicaoComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
 
+  ngOnInit() {
+    this.isLoadingResults = true;
+    this.promocaoForm = this.formBuilder.group({
+      nomePeca: [null, Validators.required],
+      data: [null, Validators.required],
+      horario: [null, Validators.required],
+      preco: [null, Validators.required],
+      site: [new Site(), Validators.required],
+      teatro: [new Teatro(), Validators.required]
+    });
+    this.getData(this.route.snapshot.params['id']);
+  }
+
   async getData(id) {
     this.sites = await this.api.getSites().toPromise();
     this.teatros = await this.api.getTeatros().toPromise();
@@ -30,6 +43,7 @@ export class PromocaoEdicaoComponent implements OnInit {
     this.id = promocao.id;
     this.promocaoForm.setValue({
       nomePeca: promocao.nomePeca,
+      data: promocao.data,
       horario: promocao.horario,
       preco: promocao.preco,
       site: promocao.site,
@@ -39,18 +53,6 @@ export class PromocaoEdicaoComponent implements OnInit {
     this.selected_teatro = promocao.teatro;
     this.isLoadingResults = false;
     console.debug('No issues, I will wait until promise is resolved..');
-  }
-
-  ngOnInit() {
-    this.isLoadingResults = true;
-    this.promocaoForm = this.formBuilder.group({
-      nomePeca: [null, Validators.required],
-      horario: [null, Validators.required],
-      preco: [null, Validators.required],
-      site: [new Site(), Validators.required],
-      teatro: [new Teatro(), Validators.required]
-    });
-    this.getData(this.route.snapshot.params['id']);
   }
 
   onFormSubmit(form:NgForm) {

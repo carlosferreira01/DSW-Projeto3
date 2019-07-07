@@ -18,6 +18,19 @@ export class TeatroEdicaoComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
 
+  ngOnInit() {
+    this.isLoadingResults = true;
+    this.teatroForm = this.formBuilder.group({
+      nome: [null, Validators.required],
+      cidade: [null, Validators.required],
+      email: [null, Validators.required],
+      senha: [null, Validators.required],
+      cnpj: [null, Validators.required]
+    });
+    this.getData(this.route.snapshot.params['id']);
+  }
+
+
   async getData(id) {
     let teatro: Teatro = await this.api.getTeatro(id).toPromise();
     this.id = teatro.id;
@@ -32,17 +45,7 @@ export class TeatroEdicaoComponent implements OnInit {
     console.debug('No issues, I will wait until promise is resolved..');
   }
 
-  ngOnInit() {
-    this.isLoadingResults = true;
-    this.teatroForm = this.formBuilder.group({
-      nome: [null, Validators.required],
-      cidade: [null, Validators.required],
-      email: [null, Validators.required],
-      senha: [null, Validators.required],
-      cnpj: [null, Validators.required]
-    });
-    this.getData(this.route.snapshot.params['id']);
-  }
+
 
   onFormSubmit(form:NgForm) {
     this.isLoadingResults = true;

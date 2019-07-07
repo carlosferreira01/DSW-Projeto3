@@ -16,6 +16,12 @@ export class SitesComponent implements OnInit {
   constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.getData();
   }
 
+  async getData() {
+    this.sites = await this.api.getSites().toPromise();
+    this.isLoadingResults = false;
+    console.debug('No issues, I will wait until promise is resolved..');
+  }
 }

@@ -13,18 +13,19 @@ import { Teatro } from '../../models/teatro';
 })
 export class PromocaoDetalhesComponent implements OnInit {
 
-  promocao: Promocao = { id: '', nomePeca: '', preco: null, horario: null, site: new Site(), teatro: new Teatro() };
+  promocao: Promocao = { id: '', nomePeca: '', preco: null, data:'', horario: '', site: new Site(), teatro: new Teatro() };
 isLoadingResults = true;
 
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
+
+  ngOnInit() {
+    this.getData(this.route.snapshot.params['id']);
+  }
 
   async getData(id) {
     this.promocao = await this.api.getPromocao(id).toPromise();
     this.isLoadingResults = false;
     console.debug('No issues, I will wait until promise is resolved..');
-  }
-  ngOnInit() {
-    this.getData(this.route.snapshot.params['id']);
   }
 
   deletePromocao(id) {

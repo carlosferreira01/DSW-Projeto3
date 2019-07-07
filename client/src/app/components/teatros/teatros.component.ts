@@ -10,12 +10,18 @@ import { Teatro } from '../../models/teatro';
 export class TeatrosComponent implements OnInit {
 
   displayedColumns: string[] = ['nome', 'cidade', 'email', 'senha', 'cnpj'];
-  livros: Teatro[] = [];
+  teatros: Teatro[] = [];
   isLoadingResults = true;
 
   constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.getData();
   }
 
+  async getData() {
+    this.teatros = await this.api.getTeatros().toPromise();
+    this.isLoadingResults = false;
+    console.debug('No issues, I will wait until promise is resolved..');
+  }
 }

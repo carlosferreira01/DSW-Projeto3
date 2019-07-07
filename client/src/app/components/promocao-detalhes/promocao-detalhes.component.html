@@ -3,7 +3,7 @@
       <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
     </div>
     <div class="button-row">
-      <a mat-flat-button color="primary" [routerLink]="['/livros']">
+      <a mat-flat-button color="primary" [routerLink]="['/promocoes']">
         <mat-icon>list</mat-icon>
       </a>
     </div>
@@ -17,10 +17,12 @@
       </mat-card-header>
       <mat-card-content>
         <dl>
+          <dt>Data:</dt>
+          <dd>{{promocao.data}}</dd>
           <dt>Horario:</dt>
-          <dd>{{teatro.horario}}</dd>
+          <dd>{{promocao.horario}}</dd>
           <dt>Preço:</dt>
-          <dd>{{teatro.preco}}</dd>
+          <dd>{{promocao.preco}}</dd>
         </dl>
       </mat-card-content>
       <mat-card-actions>

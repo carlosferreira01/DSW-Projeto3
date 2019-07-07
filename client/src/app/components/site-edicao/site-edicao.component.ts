@@ -18,6 +18,18 @@ export class SiteEdicaoComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private api: ApiService, private formBuilder: FormBuilder) { }
 
+  ngOnInit() {
+    this.isLoadingResults = true;
+    this.siteForm = this.formBuilder.group({
+      nome: [null, Validators.required],
+      url: [null, Validators.required],
+      email: [null, Validators.required],
+      senha: [null, Validators.required],
+      telefone: [null, Validators.required]
+    });
+    this.getData(this.route.snapshot.params['id']);
+  }
+
   async getData(id) {
     let site: Site = await this.api.getSite(id).toPromise();
     this.id = site.id;
@@ -30,18 +42,6 @@ export class SiteEdicaoComponent implements OnInit {
     });
     this.isLoadingResults = false;
     console.debug('No issues, I will wait until promise is resolved..');
-  }
-
-  ngOnInit() {
-    this.isLoadingResults = true;
-    this.siteForm = this.formBuilder.group({
-      nome: [null, Validators.required],
-      url: [null, Validators.required],
-      email: [null, Validators.required],
-      senha: [null, Validators.required],
-      telefone: [null, Validators.required]
-    });
-    this.getData(this.route.snapshot.params['id']);
   }
 
   onFormSubmit(form:NgForm) {

@@ -16,13 +16,14 @@ isLoadingResults = true;
 
   constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) { }
 
+  ngOnInit() {
+    this.getData(this.route.snapshot.params['id']);
+  }
+  
   async getData(id) {
     this.site = await this.api.getSite(id).toPromise();
     this.isLoadingResults = false;
     console.debug('No issues, I will wait until promise is resolved..');
-  }
-  ngOnInit() {
-    this.getData(this.route.snapshot.params['id']);
   }
 
   deleteSite(id) {

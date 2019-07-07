@@ -5,23 +5,27 @@
     <div class="button-row">
       <a mat-flat-button color="primary" [routerLink]="['/promocoes']">
         <mat-icon>list</mat-icon>
-      </a>
-    </div>
+      </a></div>
     <mat-card class="example-card">
-      <form [formGroup]="promocaoForm" (ngSubmit)="onFormSubmit(livroForm.value)">
+      <form [formGroup]="promocaoForm" (ngSubmit)="onFormSubmit(promocaoForm.value)">
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Nome" formControlName="nome" [errorStateMatcher]="matcher">
+          <input matInput placeholder="Nome" formControlName="nomePeca" [errorStateMatcher]="matcher">
           <mat-error>
-            <span *ngIf="!promocaoForm.get('nomePeca').valid && promocaoForm.get('nomePeca').touched">Por favor entre o
-              nome</span>
+            <span *ngIf="!promocaoForm.get('nomePeca').valid && promocaoForm.get('nomePeca').touched">Por favor entre o nome</span>
           </mat-error>
+        </mat-form-field>  
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Data" formControlName="data" type="date"  [errorStateMatcher]="matcher">
+            <mat-error>
+              <span *ngIf="!promocaoForm.get('data').valid && promocaoForm.get('data').touched">Por favor entre com a data</span>
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Horário" formControlName="horario" type="number"  [errorStateMatcher]="matcher">
-          <mat-error>
-            <span *ngIf="!promocaoForm.get('horario').valid && promocaoForm.get('horario').touched">Por favor entre com o horário</span>
-          </mat-error>
-        </mat-form-field>
+            <input matInput placeholder="Horário" formControlName="horario" type="time"  [errorStateMatcher]="matcher">
+              <mat-error>
+                <span *ngIf="!promocaoForm.get('horario').valid && promocaoForm.get('horario').touched">Por favor entre com o horário</span>
+              </mat-error>
+          </mat-form-field>
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Preço" formControlName="preco" type="number" min=0.01 [errorStateMatcher]="matcher">
           <mat-error>
@@ -31,7 +35,7 @@
         <mat-form-field class="example-full-width">
             <mat-label>Site</mat-label>
             <mat-select formControlName="site">
-                <mat-option *ngFor="let promocao of sites" [value]="site.id">
+                <mat-option *ngFor="let site of sites" [value]="site.id">
                   {{site.nome}}
                 </mat-option>
               </mat-select>
@@ -39,7 +43,7 @@
         <mat-form-field class="example-full-width">
           <mat-label>Teatro</mat-label>
           <mat-select formControlName="teatro">
-              <mat-option *ngFor="let promocao of teatro" [value]="teatro.id">
+              <mat-option *ngFor="let teatro of teatros" [value]="teatro.id">
                 {{teatro.nome}}
               </mat-option>
             </mat-select>

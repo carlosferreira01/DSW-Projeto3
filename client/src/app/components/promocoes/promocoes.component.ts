@@ -9,14 +9,21 @@ import { Promocao } from '../../models/promocao';
 })
 export class PromocoesComponent implements OnInit {
 
-  displayedColumns: string[] = ['nomePeca', 'preco', 'horario', 'site', 'teatro'];
-  livros: Promocao[] = [];
+  displayedColumns: string[] = ['nomePeca', 'preco', 'data','horario', 'site', 'teatro'];
+  promocoes: Promocao[] = [];
   isLoadingResults = true;
 
 
   constructor(private api: ApiService) { }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  async getData() {
+    this.promocoes = await this.api.getPromocoes().toPromise();
+    this.isLoadingResults = false;
+    console.debug('No issues, I will wait until promise is resolved..');
   }
 
 }

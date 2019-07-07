@@ -6,9 +6,9 @@ model {
 
 json {
     id promocao.id
-    nome promocao.nome
+    nomePeca promocao.nomePeca
     preco promocao.preco
-	dia promocao.dia
+	data promocao.data
 	horario promocao.horario
     site {
         id promocao.site.id

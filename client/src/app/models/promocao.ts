@@ -3,9 +3,10 @@ import { Teatro } from './teatro';
 
 export class Promocao {
     id: string;
-    nomePeca : string
+    nomePeca : string;
+    data: string;
     preco: number;
-    horario: number;
+    horario: string;
     site: Site;
     teatro: Teatro;
 }
