@@ -26,8 +26,8 @@
       </ng-container>
       <!-- Coluna Senha -->
       <ng-container matColumnDef="senha">
-        <th mat-header-cell *matHeaderCellDef>Senha</th>
-        <td mat-cell *matCellDef="let row">{{row.senha}}</td>
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell type="password" *matCellDef="let row"></td>
       </ng-container>
       <!-- Coluna CNPJ -->
       <ng-container matColumnDef="cnpj">
@@ -37,5 +37,8 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/teatro-detalhes/', row.id]"></tr>
     </table>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/promocoes']"><mat-icon>undo</mat-icon></a>
+    </div>
   </div>
 </div>

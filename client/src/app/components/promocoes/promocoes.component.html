@@ -40,5 +40,11 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/promocao-detalhes/', row.id]"></tr>
     </table>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/sites']">Ver Sites</a>
+    </div>
+    <div class="button-row">
+      <a mat-flat-button color="primary" [routerLink]="['/teatros']">Ver Teatros</a>
+    </div>
   </div>
 </div>

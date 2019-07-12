@@ -28,7 +28,7 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Senha" formControlName="senha" [errorStateMatcher]="matcher">
+          <input matInput placeholder="Senha" type="password" formControlName="senha" [errorStateMatcher]="matcher">
           <mat-error>
             <span *ngIf="!siteForm.get('senha').valid && siteForm.get('senha').touched">Por favor entre a senha</span>
           </mat-error>
